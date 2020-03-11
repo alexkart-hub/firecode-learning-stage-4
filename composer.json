@@ -1,0 +1,14 @@
+{
+    "name": "alex_kart/stage4",
+    "type": "project",
+    "authors": [{
+        "name": "Alexander Kartavtsev",
+        "email": "maxis-life@yandex.ru"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\": "application"
+        }
+    }
+}
