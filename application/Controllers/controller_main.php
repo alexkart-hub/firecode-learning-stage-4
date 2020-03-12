@@ -22,10 +22,11 @@ class Controller_Main extends Controller
 		$data += ['index1' => $index1];
 		$data += ['index2' => $index2];
 
-		if ($index1 != 'korm' && $index1 != '404') {
-			Route::ErrorPage404();
-		} else {
-			$this->view->generate('main_view.php', 'template_view.php', $data);
+		switch ($index1){
+			case 'korm':  $layout = 'main';break;
+			case 'parser': $layout = 'parser'; break;
+			default : $layout = '404'; break;
 		}
+		$this->view->generate($layout.'_view.php', 'template_view.php', $data);
 	}
 }
