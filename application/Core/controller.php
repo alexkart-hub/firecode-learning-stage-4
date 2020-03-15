@@ -12,7 +12,7 @@ class Controller {
 		$this->view = new View();
 	}
 	
-	function action($index1, $index2)
+	function action_index()
 	{
 	}
 }

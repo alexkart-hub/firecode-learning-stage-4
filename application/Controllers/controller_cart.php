@@ -3,15 +3,14 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\core\Route;
 use app\core\View;
-use app\models\Model_Main;
+use app\models\Model_Cart;
 
-class Controller_Main extends Controller
+class Controller_Cart extends Controller
 {
 	public function __construct()
 	{
-		$this->model = new Model_Main;
+		$this->model = new Model_Cart;
 		$this->view = new View;
 	}
 
@@ -20,8 +19,8 @@ class Controller_Main extends Controller
 		// echo $index1.'   '.$index2;
 		$data = $this->model->getData();
 		
-			 $layout = 'main';
+			 $layout = 'cart';
 			
-		$this->view->generate($layout.'_view.php', 'template_view.php', $data);
+		$this->view->generate($layout.'.php', 'template_view.php', $data);
 	}
 }

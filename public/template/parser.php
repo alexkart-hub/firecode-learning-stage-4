@@ -108,8 +108,11 @@ echo '<br>';
 //             break;
 //     }
 // }
-$file = $_SERVER['DOCUMENT_ROOT'] . '/doc/catalog.xml';
 
-$db = DbMysqli::GetInstance();
-$result = Parser::LoadXMLToDb($file,$db);
+// $file = $_SERVER['DOCUMENT_ROOT'] . '/doc/catalog.xml';
 
+// $db = DbMysqli::GetInstance();
+// $result = Parser::LoadXMLToDb($file,$db);
+
+
+echo '<br> parser <br>';
