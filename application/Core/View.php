@@ -15,6 +15,6 @@ class View
 		}
 		*/
 		
-		include $_SERVER['DOCUMENT_ROOT'].'/application/views/'.$template_view;
+		include $_SERVER['DOCUMENT_ROOT'].'/public/template/'.$template_view;
 	}
 }

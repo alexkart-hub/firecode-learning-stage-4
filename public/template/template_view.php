@@ -9,7 +9,7 @@
     <body>
       Здесь будет header
     <!-- ====================== Content ============================== -->
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/application/views/' . $content_view; ?>
+    <?php include TEMPLATE_PATH . $content_view; ?>
     <!-- ====================== /Content ============================= -->
     Здесь будет footer    
     </body>
