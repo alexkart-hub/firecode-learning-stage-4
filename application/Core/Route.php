@@ -14,6 +14,7 @@ class Route
 		$index = '';
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
+		// debug($routes);
 
 		// получаем имя контроллера
 		if (!empty($routes[1])) {
@@ -103,7 +104,7 @@ class Route
 		}
 	}
 
-	static public function GetProduct(int $product)
+	static public function GetProduct($product)
 	{
 		if($product > 0 && $product < 1000){
 			return $product;

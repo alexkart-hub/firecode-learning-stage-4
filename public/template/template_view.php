@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/normalize.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="css/adaptive.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/style.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="/css/adaptive.css?<?php echo time(); ?>">
     <title>PetShop</title>
 </head>
 
@@ -20,7 +20,7 @@
     <section class="header">
         <div class="container d-flex justify-content-between">
             <a class="navbar-brand logo" href="#">
-                <img src="img/logo.png" alt="">
+                <img src="/img/logo.png" alt="">
             </a>
             <a class="navbar-brand cart" href="#">
                 <div class="cart_total">
@@ -28,7 +28,7 @@
                     <p>Сумма: <span>17000 </span><i class="fas fa-ruble-sign"></i> </p>
                 </div>
                 <div class="cart_quantity">451</div>
-                <img src="img/Vector.png" alt="">
+                <img src="/img/Vector.png" alt="">
             </a>
         </div>
         <div class="header_bottom">
@@ -68,7 +68,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand" href="#">
-                    <img src="img/logo.png" alt="">
+                    <img src="/img/logo.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>

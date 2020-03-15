@@ -17,11 +17,11 @@
                 <div class="product_quantity">
                     <button class="minus">-</button><input type="text" class="quantity" value=1><button class="plus">+</button>
                 </div>
-                <button class="add_to_cart"><img src="img/Vector-white.png" alt="">   В корзину</button>
+                <button class="add_to_cart"><img src="/img/Vector-white.png" alt="">   В корзину</button>
             </div>
             <div class="col-lg-5 col-md-6 order-md-first">
                 <div class="product_img">
-                    <img src="img/korm-05.jpg" alt="">
+                    <img src="/img/korm-05.jpg" alt="">
                 </div>
             </div>
 
@@ -50,11 +50,11 @@
                         <span class="card-title">Сухой корм для щенков Далматина Royal Canin</span>
                     </div>
                     <div class="tile_img">
-                        <img src="img/korm-01.png" class="card-img-top p-2" alt="">
+                        <img src="/img/korm-01.png" class="card-img-top p-2" alt="">
                     </div>
                     <div class="tile_buttons">
                         <button class="green">1700 <i class="fas fa-ruble-sign"></i></button>
-                        <button class="yellow"> <img src="img/Vector-white.png" alt=""> Купить</button>
+                        <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                     </div>
                 </div>
             </div>
@@ -65,11 +65,11 @@
                         <span class="card-title">Сухой корм для щенков йоркширский терьер Royal Canin</span>
                     </div>
                     <div class="tile_img">
-                        <img src="img/korm-02.png" class="card-img-top p-2" alt="">
+                        <img src="/img/korm-02.png" class="card-img-top p-2" alt="">
                     </div>
                     <div class="tile_buttons">
                         <button class="green">1700 <i class="fas fa-ruble-sign"></i></button>
-                        <button class="yellow"> <img src="img/Vector-white.png" alt=""> Купить</button>
+                        <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                     </div>
                 </div>
             </div>
@@ -80,11 +80,11 @@
                         <span class="card-title"> Влажный корм для стареющих собак Mature +8 Royal Canin</span>
                     </div>
                     <div class="tile_img">
-                        <img src="img/korm-03.png" class="card-img-top p-2" alt="">
+                        <img src="/img/korm-03.png" class="card-img-top p-2" alt="">
                     </div>
                     <div class="tile_buttons">
                         <button class="green">1700 <i class="fas fa-ruble-sign"></i></button>
-                        <button class="yellow"> <img src="img/Vector-white.png" alt=""> Купить</button>
+                        <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                     </div>
                 </div>
             </div>
@@ -95,11 +95,11 @@
                         <span class="card-title"> Влажный корм для взрослых собак всех пород Grandorf: телятина</span>
                     </div>
                     <div class="tile_img">
-                        <img src="img/korm-04.png" class="card-img-top p-2" alt="">
+                        <img src="/img/korm-04.png" class="card-img-top p-2" alt="">
                     </div>
                     <div class="tile_buttons">
                         <button class="green">1700 <i class="fas fa-ruble-sign"></i></button>
-                        <button class="yellow"> <img src="img/Vector-white.png" alt=""> Купить</button>
+                        <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                     </div>
                 </div>
             </div>
@@ -110,11 +110,11 @@
                         <span class="card-title">Сухой корм для щенков средних пород Guabi Natural</span>
                     </div>
                     <div class="tile_img">
-                        <img src="img/korm-05.png" class="card-img-top p-2" alt="">
+                        <img src="/img/korm-05.png" class="card-img-top p-2" alt="">
                     </div>
                     <div class="tile_buttons">
                         <button class="green">1700 <i class="fas fa-ruble-sign"></i></button>
-                        <button class="yellow"> <img src="img/Vector-white.png" alt=""> Купить</button>
+                        <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                     </div>
                 </div>
             </div>
