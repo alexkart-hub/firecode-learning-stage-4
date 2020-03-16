@@ -13,10 +13,10 @@ class Controller_Category extends Controller
 		$this->view = new View;
     }
     
-    public function action_category($name_category)
+    public function action_category($category)
     {
         $data = $this->model->getData();
-        $data['name_category'] = $name_category;
+        $data['category'] = $category;
 		
 			 $layout = 'category';
 			

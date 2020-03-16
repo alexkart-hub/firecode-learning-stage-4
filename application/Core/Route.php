@@ -29,26 +29,28 @@ class Route
 			$action_name = $routes[2];
 		}
 
-		
-		
-		if(self::GetCategory($controller_name)){
-			if( $action_name == 'index' ){
-			$name_category = $controller_name;
-			$controller_name = 'Category';
-			$action_name = strtolower($controller_name);
-			$index = 'name_category';
-		} else {
-			if( self::GetProduct($action_name) ){
-				$name_product = [
-					'name_category' => $controller_name,
-					'id_product' => $action_name
-				];
-				$controller_name = 'Product';
+
+		$category = self::GetCategory($controller_name);
+		if ($category) {
+			if ($action_name == 'index') {
+				$name_category = $category;
+				
+				$controller_name = 'Category';
 				$action_name = strtolower($controller_name);
-				$index = 'name_product';
+				$index = 'name_category';
+			} else {
+				if (Product::GetProduct($action_name, DbMysqli::GetInstance())) {
+					$name_product = [
+						'name_category' => $controller_name,
+						'id_product' => $action_name
+					];
+					$controller_name = 'Product';
+					$action_name = strtolower($controller_name);
+					$index = 'name_product';
+				}
 			}
 		}
-		}
+		
 		// добавляем префиксы
 		$model_name = 'Model_' . $controller_name;
 		$controller_name = 'Controller_' . $controller_name;
@@ -97,19 +99,26 @@ class Route
 		header('Location:' . $host . '404');
 	}
 
-		static function GetCategory(string $name)
+	static function GetCategory(string $name)
 	{
 		$categories = Product::GetCategorys(DbMysqli::GetInstance());
-		if (in_array($name, Product::GetListCategories($categories))) {
-			return $name;
-		} else {
-			return false;
+		foreach ($categories as $category) {
+			if ($name == translit('Корм ' . $category['name'])) {
+				return $category;
+			}
 		}
+		return false;
+
+		// if (in_array($name, Product::GetListCategories($categories))) {
+		// 	return $name;
+		// } else {
+		// 	return false;
+		// }
 	}
 
 	static public function GetProduct($product)
 	{
-		if($product > 0 && $product < 1000){
+		if ($product > 0 && $product < 10000) {
 			return $product;
 		} else {
 			return false;

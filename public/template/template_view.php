@@ -44,7 +44,7 @@
                             </li>
                             <?php foreach($data['categories'] as $category): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= translit('Корм '.$category['name']); ?>">Корм <?= mb_strtolower($category['name']); ?></a>
+                                <a class="nav-link" href="/<?= translit('Корм '.$category['name']); ?>">Корм <?= mb_strtolower($category['name']); ?></a>
                             </li>
                             <? endforeach; ?>
                         </ul>
@@ -70,7 +70,7 @@
                     <div class="navbar-nav justify-content-between">
                         <a class="nav-item nav-link" href="/">Каталог:</a>
                         <?php foreach($data['categories'] as $category): ?>
-                        <a class="nav-item nav-link" href="<?= translit('Корм '.$category['name']); ?>"><?= $category['name'];?></a>
+                        <a class="nav-item nav-link" href="/<?= translit('Корм '.$category['name']); ?>"><?= $category['name'];?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

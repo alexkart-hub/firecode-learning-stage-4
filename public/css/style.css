@@ -192,6 +192,9 @@ h1 {
     max-width: 320px;
     border: 1px solid #A1A7B1;
     margin: 0 auto; }
+    .category .tile a {
+      color: #333333;
+      text-decoration: none; }
     .category .tile:hover {
       outline: 3px solid #1F8A70; }
     .category .tile .tile_title {

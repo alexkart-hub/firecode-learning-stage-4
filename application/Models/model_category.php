@@ -8,10 +8,10 @@ use app\core\Model;
 
 class Model_Category extends Model
 {
-    // public function getData()
-    // {
-    //     $data = $this->data;
-     
-    //     return $data;
-    // }
+    public function getData()
+    {
+        $data = $this->data;
+        $data['products'] = Product::GetProducts($this->db);
+        return $data;
+    }
 }

@@ -199,10 +199,11 @@ class Parser
                 $manufacturer_id = self::GetManufacturerByName($manufacturer, $db);
                 $purpose_id = self::GetPurposeByName($purpose, $db);
                 $description = json_encode(htmlspecialchars($description), JSON_UNESCAPED_UNICODE);
+                $price = rand(500,2000);
                 $query = "INSERT INTO products 
-            (id,name,id_section,description,image,purpose_id,manufacturer_id)
+            (id,name,price,id_section,description,image,purpose_id,manufacturer_id)
             VALUES 
-            ('$id','$name','$id_section','$description','$image','$purpose_id','$manufacturer_id')";
+            ('$id','$name','$price','$id_section','$description','$image','$purpose_id','$manufacturer_id')";
                 $db->ExecuteQuery($query);
             }
             // echo htmlspecialchars_decode(json_decode($description)).'<br><br>';
