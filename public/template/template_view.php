@@ -19,10 +19,10 @@
 <body>
     <section class="header">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand logo" href="#">
+            <a class="navbar-brand logo" href="/">
                 <img src="/img/logo.png" alt="">
             </a>
-            <a class="navbar-brand cart" href="#">
+            <a class="navbar-brand cart" href="cart">
                 <div class="cart_total">
                     <p>Корзина</p>
                     <p>Сумма: <span>17000 </span><i class="fas fa-ruble-sign"></i> </p>
@@ -40,20 +40,13 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Главная</a>
+                                <a class="nav-link" href="/">Главная</a>
                             </li>
+                            <?php foreach($data['categories'] as $category): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Корм собакам</a>
+                                <a class="nav-link" href="<?= translit('Корм '.$category['name']); ?>">Корм <?= mb_strtolower($category['name']); ?></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Корм кошкам</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Корм грызунам</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Корм птицам</a>
-                            </li>
+                            <? endforeach; ?>
                         </ul>
                     </div>
                 </nav>
@@ -75,11 +68,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav justify-content-between">
-                        <a class="nav-item nav-link" href="#">Каталог:</a>
-                        <a class="nav-item nav-link" href="#">Собакам</a>
-                        <a class="nav-item nav-link" href="#">Кошкам</a>
-                        <a class="nav-item nav-link" href="#">Грызунам</a>
-                        <a class="nav-item nav-link" href="#">Птицам</a>
+                        <a class="nav-item nav-link" href="/">Каталог:</a>
+                        <?php foreach($data['categories'] as $category): ?>
+                        <a class="nav-item nav-link" href="<?= translit('Корм '.$category['name']); ?>"><?= $category['name'];?></a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </nav>

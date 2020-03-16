@@ -2,6 +2,9 @@
 
 namespace app\core;
 
+use app\classes\db\DbMysqli;
+use app\classes\Product;
+
 class Route
 {
 	static function start()
@@ -14,7 +17,7 @@ class Route
 		$index = '';
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
-		// debug($routes);
+		// debug($_POST);
 
 		// получаем имя контроллера
 		if (!empty($routes[1])) {
@@ -94,10 +97,10 @@ class Route
 		header('Location:' . $host . '404');
 	}
 
-	static function GetCategory(string $name)
+		static function GetCategory(string $name)
 	{
-		$category_pages = include $_SERVER['DOCUMENT_ROOT'] . "/config/category_pages.php";
-		if (in_array($name, $category_pages)) {
+		$categories = Product::GetCategorys(DbMysqli::GetInstance());
+		if (in_array($name, Product::GetListCategories($categories))) {
 			return $name;
 		} else {
 			return false;

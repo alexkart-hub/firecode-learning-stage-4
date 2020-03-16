@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
+use app\classes\db\DbMysqli;
+use app\classes\Product;
 use app\core\Controller;
-use app\core\Route;
 use app\core\View;
 use app\models\Model_Main;
 
@@ -17,9 +18,13 @@ class Controller_Main extends Controller
 
 	function action_index()
 	{
-		// echo $index1.'   '.$index2;
+		$db = DbMysqli::GetInstance();
 		$data = $this->model->getData();
-		
+		if(!empty($_REQUEST)){
+			$category = Product::GetCategoryById( $db, $_REQUEST['id'] );
+			header('Location: '.translit('Корм '.$category['name']));
+			die();
+		} 
 			 $layout = 'main';
 			
 		$this->view->generate($layout.'_view.php', 'template_view.php', $data);
