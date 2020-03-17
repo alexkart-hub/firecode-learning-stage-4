@@ -6,4 +6,25 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'app\\classes\\Pagination' => $baseDir . '/application/classes/pagination.php',
+    'app\\classes\\Parser' => $baseDir . '/application/classes/parser.php',
+    'app\\classes\\Product' => $baseDir . '/application/classes/product.php',
+    'app\\classes\\Singleton' => $baseDir . '/application/classes/singleton.php',
+    'app\\classes\\db\\A_Db' => $baseDir . '/application/classes/db/a_db.php',
+    'app\\classes\\db\\Db' => $baseDir . '/application/classes/db/db.php',
+    'app\\classes\\db\\DbMysqli' => $baseDir . '/application/classes/db/dbmysqli.php',
+    'app\\controllers\\Controller_404' => $baseDir . '/application/controllers/controller_404.php',
+    'app\\controllers\\Controller_Cart' => $baseDir . '/application/controllers/controller_cart.php',
+    'app\\controllers\\Controller_Category' => $baseDir . '/application/controllers/controller_category.php',
+    'app\\controllers\\Controller_Main' => $baseDir . '/application/controllers/controller_main.php',
+    'app\\controllers\\Controller_Parser' => $baseDir . '/application/controllers/controller_parser.php',
+    'app\\controllers\\Controller_Product' => $baseDir . '/application/controllers/controller_product.php',
+    'app\\core\\Controller' => $baseDir . '/application/Core/controller.php',
+    'app\\core\\Model' => $baseDir . '/application/Core/Model.php',
+    'app\\core\\Route' => $baseDir . '/application/Core/Route.php',
+    'app\\core\\View' => $baseDir . '/application/Core/View.php',
+    'app\\models\\Model_Cart' => $baseDir . '/application/Models/model_cart.php',
+    'app\\models\\Model_Category' => $baseDir . '/application/Models/model_category.php',
+    'app\\models\\Model_Main' => $baseDir . '/application/Models/model_main.php',
+    'app\\models\\Model_Product' => $baseDir . '/application/Models/model_product.php',
 );

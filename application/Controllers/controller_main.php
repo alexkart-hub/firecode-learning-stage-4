@@ -20,8 +20,8 @@ class Controller_Main extends Controller
 	{
 		$db = DbMysqli::GetInstance();
 		$data = $this->model->getData();
-		if(!empty($_REQUEST)){
-			$category = Product::GetCategoryById( $db, $_REQUEST['id'] );
+		if(!empty($_POST)){
+			$category = Product::GetCategoryById( $db, $_POST['id'] );
 			header('Location: '.translit('Корм '.$category['name']));
 			die();
 		} 

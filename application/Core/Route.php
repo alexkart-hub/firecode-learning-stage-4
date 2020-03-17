@@ -22,6 +22,10 @@ class Route
 		// получаем имя контроллера
 		if (!empty($routes[1])) {
 			$controller_name = $routes[1];
+			$get = explode( '?', $controller_name );
+			if (isset($get[1])){
+				$controller_name = $get[0];
+			}
 		}
 
 		// получаем индекс

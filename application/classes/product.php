@@ -42,6 +42,18 @@ class Product
         return $category_pages;
     }
 
+    static public function GetProductsOfCategory($id_category, Db $db)
+    {
+        $result = $db->ExecuteQuery("SELECT * FROM products WHERE id_section='$id_category'");
+        if ($result) {
+            foreach ($result as $k => $v) {
+                $data[$k] = $v;
+            }
+            return $data;
+        } else {
+            return false;
+        }
+    }
     static public function GetProducts(Db $db)
     {
         $result = $db->ExecuteQuery("SELECT * FROM products");

@@ -1,7 +1,6 @@
 <?php
 $category = $data['category'];
 // debug($data['products']);
-// debug($data);
 ?>
 <section class="category">
     <div class="container">
@@ -11,6 +10,7 @@ $category = $data['category'];
             <span>Корм <?= mb_strtolower($category['name']); ?></span>
         </div>
         <h1>Корм <?= mb_strtolower($category['name']); ?></h1>
+        <?php include "module/pagination.php"; ?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
             <?php foreach ($data['products'] as $product) :
                 if ($product['id_section'] == $category['id']) :
@@ -35,28 +35,6 @@ $category = $data['category'];
             endforeach; ?>
         </div>
 
-        <div class="container pagination justify-content-center">
-            <div class="row">
-                <div class="col grey"><i class="fas fa-angle-left "></i></div>
-                <a href="#">
-                    <div class="col green">1</div>
-                </a>
-                <a href="#">
-                    <div class="col green">2</div>
-                </a>
-                <a href="#">
-                    <div class="col green">3</div>
-                </a>
-                <a href="#">
-                    <div class="col green">4</div>
-                </a>
-                <a href="#">
-                    <div class="col green">5</div>
-                </a>
-                <a href="#">
-                    <div class="col green"><i class="fas fa-angle-right "></i></div>
-                </a>
-            </div>
-        </div>
+        <?php include "module/pagination.php"; ?>
     </div>
 </section>
