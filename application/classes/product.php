@@ -88,7 +88,7 @@ class Product
     static public function GetProduct( $id, Db $db )
     {
         $result = $db->ExecuteQuery("SELECT * FROM products WHERE id='$id'");
-        if ($result) {
+        if ($result->num_rows) {
             foreach ($result->fetch_assoc() as $k => $v) {
                 if ($k == 'description') {
                     $data[$k] = htmlspecialchars_decode($v);
@@ -97,6 +97,15 @@ class Product
                 }
             }
             return $data;
+        } else {
+            return false;
+        }
+    }
+    static public function GetPrice( $id, Db $db )
+    {
+        $result = $db->ExecuteQuery("SELECT price FROM products WHERE id='$id'")->fetch_assoc();
+        if ($result) {
+            return $result['price'];
         } else {
             return false;
         }

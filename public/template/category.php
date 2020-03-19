@@ -1,6 +1,7 @@
 <?php
 $category = $data['category'];
-// debug($data['products']);
+debug($data['qqq']);
+
 ?>
 <section class="category">
     <div class="container">
@@ -27,7 +28,10 @@ $category = $data['category'];
                             </a>
                             <div class="tile_buttons">
                                 <button class="green"><?= $product['price'] ?> <i class="fas fa-ruble-sign"></i></button>
-                                <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
+                                
+                                <!-- <a href="/<?//= translit("Корм " . $category['name']) . "?page=".$data['page']['number']?>"> -->
+                                    <button class="yellow" id="add_to_cart_<?= $product['id']; ?>"> <img src="/img/Vector-white.png" alt=""> Купить</button>
+                                <!-- </a> -->
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\classes\cart\Cart;
+use app\classes\cart\LittleCart;
 use app\classes\Pagination;
 use app\core\Controller;
 use app\core\Route;
@@ -25,7 +27,7 @@ class Controller_Category extends Controller
 		$data['category'] = $category;
 		$data['page']['number'] = intval($get); //номер страницы при пагинации
 		$data['page']['count'] = Pagination::GetCountPages($category['id'], $countProductsOnPage, $this->model->db);
-		if ($data['page']['number'] > $data['page']['count'] || !is_numeric($get)) {
+		if ($data['page']['number'] > $data['page']['count'] || $data['page']['number'] < 1 || !is_numeric($get)) {
 			Route::ErrorPage404();
 		}
 		$params = [
@@ -35,8 +37,19 @@ class Controller_Category extends Controller
 		];
 		$data['products'] = Pagination::GetProducts($params, $this->model->db);
 
+		$cart = Cart::GetInstance();
+		$id = empty($_GET['id']) ? 0 : $_GET['id'];
+		if($id){
+			$cart->AddToCart($id,1);
+		}
+			// debug($cart->AddToCart($id,1));
+	
+		// $cart->SetCart();
+		// debug($_SESSION);
+		// debug($_GET);
+		
 		$layout = 'category';
-
+		
 		$this->view->generate($layout . '.php', 'template_view.php', $data);
 	}
 }

@@ -2,6 +2,7 @@
 
 namespace app\core;
 
+use app\classes\cart\Cart;
 use app\classes\db\DbMysqli;
 use app\classes\Product;
 
@@ -9,7 +10,8 @@ class Route
 {
 	static function start()
 	{
-
+		$cart = Cart::GetInstance();
+		$cart->SessionStart(rand(1,1000000));
 
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
@@ -25,9 +27,11 @@ class Route
 			$get = explode( '?', $controller_name );
 			if (isset($get[1])){
 				$controller_name = $get[0];
+				$get = explode('&',$get[1]);
+				// debug($get);
 			}
 		}
-
+		
 		// получаем индекс
 		if (!empty($routes[2])) {
 			$action_name = $routes[2];
@@ -112,20 +116,5 @@ class Route
 			}
 		}
 		return false;
-
-		// if (in_array($name, Product::GetListCategories($categories))) {
-		// 	return $name;
-		// } else {
-		// 	return false;
-		// }
-	}
-
-	static public function GetProduct($product)
-	{
-		if ($product > 0 && $product < 10000) {
-			return $product;
-		} else {
-			return false;
-		}
 	}
 }
