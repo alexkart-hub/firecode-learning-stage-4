@@ -36,7 +36,8 @@ class Controller_Product extends Controller
     $cart = Cart::GetInstance();
     $id = empty($_GET['id']) ? 0 : $_GET['id'];
     if ($id) {
-      $cart->AddToCart($id, $_GET['quantity']);
+      $quantity = empty($_GET['quantity']) ? 1 : $_GET['quantity'];
+      $cart->AddToCart($id, $quantity);
     }
 
     $layout = 'product';

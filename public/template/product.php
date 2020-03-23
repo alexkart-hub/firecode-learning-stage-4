@@ -48,7 +48,7 @@ $product = $data['product'];
             <?php foreach ($data['products'] as $product) : ?>
                 <div class="col mb-5">
                     <div class="card tile">
-                        <a href="/<?= $data['name_category']."/".$product['id']; ?>">
+                        <a href="/<?= $data['name_category'] . "/" . $product['id']; ?>">
                             <div class="tile_title">
                                 <span class="card-title"><?= $product['name']; ?></span>
                             </div>
@@ -58,7 +58,7 @@ $product = $data['product'];
                         </a>
                         <div class="tile_buttons">
                             <button class="green"><?= $product['price']; ?> <i class="fas fa-ruble-sign"></i></button>
-                            <button class="yellow"> <img src="/img/Vector-white.png" alt=""> Купить</button>
+                            <button class="yellow" id="add_to_cart_<?= $product['id']; ?>"> <img src="/img/Vector-white.png" alt=""> Купить</button>
                         </div>
                     </div>
                 </div>
