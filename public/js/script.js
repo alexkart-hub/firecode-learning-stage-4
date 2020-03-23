@@ -63,6 +63,7 @@ $('.delete_item').on({
 
 $('.plus').on({
     click: function(e) {
+        console.log(this.id);
         val = +$('#quantity_' + this.id.substr(9)).val() + 1;
         $('#quantity_' + this.id.substr(9)).val(val);
         query(this.id.substr(9), val);
@@ -101,3 +102,36 @@ function query(id, value) {
         }
     });
 }
+
+$('.p_plus').on({
+    click: function(e) {
+        console.log(this.id);
+        val = +$('#p_quantity').val() + 1;
+        $('#p_quantity').val(val);
+    }
+});
+
+$('.p_minus').on({
+    click: function(e) {
+        val = +$('#p_quantity').val();
+        val = val == 1 ? val : val - 1;
+        $('#p_quantity').val(val);
+    }
+});
+
+$("[id ^= 'p_add_to_cart_']").on({
+    click: function(e) {
+        id = this.id.substr(-4, 4);
+        $.ajax({
+            type: 'GET',
+            url: "",
+            data: {
+                id: id,
+                quantity: $('#p_quantity').val()
+            },
+            success: function(data) {
+                updateLittleCart(data);
+            }
+        });
+    }
+});

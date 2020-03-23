@@ -1,10 +1,19 @@
 .product {
     color: #333333;
-    .product_img {
+    .image {
         border: 1px solid #A1A7B1;
-        padding: 5px;
-        img {
-            width: 100%;
+        max-height: 300px;
+        .product_img {
+            padding: 10px;
+            width: max-content;
+            margin: 0 auto;
+            max-width: 100%;
+            height: 100%;
+            img {
+                max-height: 100%;
+                max-width: 100%;
+                // width: 100%;
+            }
         }
     }
     h1 {
@@ -78,7 +87,7 @@
 
 .product_quantity {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     button {
         width: 26px;
         height: 26px;

@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\classes\cart\Cart;
-use app\classes\cart\LittleCart;
 use app\core\Controller;
 use app\core\View;
 use app\models\Model_Cart;
@@ -19,13 +18,19 @@ class Controller_Cart extends Controller
 	function action_index()
 	{
 		$data = $this->model->getData();
+		foreach($data['categories'] as $category){
+			$result[$category['id']] = $category['name']; 
+		}
+		$data['short_categories'] = $result;
 		$cart = Cart::GetInstance();
 		if(isset($_GET['clear'])){
-			// $cart->SessionStop();
-			$cart->ClearCart();
+			$cart->SessionStop();
+			// $cart->ClearCart();
 		}
 		if(isset($_GET['delete_id'])){
 			$cart->DeleteFromCart($_GET['delete_id']);
+			$id = $_GET['delete_id'];
+
 		}
 		if(isset($_GET['id'])){
 			$_SESSION['cart'][$_GET['id']] = $_GET['value'];

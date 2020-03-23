@@ -10,6 +10,8 @@ return array(
     'app\\classes\\Parser' => $baseDir . '/application/classes/parser.php',
     'app\\classes\\Product' => $baseDir . '/application/classes/product.php',
     'app\\classes\\Singleton' => $baseDir . '/application/classes/singleton.php',
+    'app\\classes\\cart\\A_Cart' => $baseDir . '/application/classes/cart/A_Cart.php',
+    'app\\classes\\cart\\Cart' => $baseDir . '/application/classes/cart/Cart.php',
     'app\\classes\\db\\A_Db' => $baseDir . '/application/classes/db/a_db.php',
     'app\\classes\\db\\Db' => $baseDir . '/application/classes/db/db.php',
     'app\\classes\\db\\DbMysqli' => $baseDir . '/application/classes/db/dbmysqli.php',

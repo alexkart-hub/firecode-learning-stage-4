@@ -1,7 +1,5 @@
 <?php
 $category = $data['category'];
-debug($data['qqq']);
-
 ?>
 <section class="category">
     <div class="container">

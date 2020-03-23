@@ -20,7 +20,7 @@ abstract class A_Cart
 		
 		
 		return $this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
-	
+		
 	}
 
 	function DeleteFromCart($id)
@@ -48,7 +48,7 @@ abstract class A_Cart
 
 	function SessionStop()
 	{
-		// $_SESSION['user_id'] = "";
+		$_SESSION['user_id'] = "";
 		// $_SESSION['cart'] = null;
 		session_destroy();
 	}
@@ -57,7 +57,5 @@ abstract class A_Cart
 	{
 	}
 
-	public function GetCart()
-	{
-	}
+	
 }

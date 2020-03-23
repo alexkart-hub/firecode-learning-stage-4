@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\classes\cart\Cart;
 use app\classes\Product;
 use app\core\Controller;
 use app\core\View;
@@ -29,7 +30,15 @@ class Controller_Product extends Controller
         $data['name_category_rus'] = 'Корм ' . mb_strtolower($v['name']);
       }
     }
+
     $data['products'] = Product::GetProducts5($data['product']['id_section'],$this->model->db);
+
+    $cart = Cart::GetInstance();
+    $id = empty($_GET['id']) ? 0 : $_GET['id'];
+    if ($id) {
+      $cart->AddToCart($id, $_GET['quantity']);
+    }
+
     $layout = 'product';
 
     $this->view->generate($layout . '.php', 'template_view.php', $data);

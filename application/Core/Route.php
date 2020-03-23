@@ -10,28 +10,39 @@ class Route
 {
 	static function start()
 	{
+		$db = DbMysqli::GetInstance();
 		$cart = Cart::GetInstance();
-		$cart->SessionStart(rand(1,1000000));
+		$user_id = rand(1, 1000000);
+		if (isset($_COOKIE['user_id'])) {
+			$user_id = $_COOKIE['user_id'];
+		}
 
+
+
+		$cart->SessionStart($user_id);
+		$cookie = setcookie('user_id', $_SESSION['user_id'], time() + (60 * 60 * 24 * 30 * 12), "/");
+		if (!$_SESSION['cart']) {
+			$cart->GetUsersCart($user_id, $db);
+		}
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';
 		$index = '';
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
-		// debug($_POST);
+		// debug($routes);
 
 		// получаем имя контроллера
 		if (!empty($routes[1])) {
 			$controller_name = $routes[1];
-			$get = explode( '?', $controller_name );
-			if (isset($get[1])){
+			$get = explode('?', $controller_name);
+			if (isset($get[1])) {
 				$controller_name = $get[0];
-				$get = explode('&',$get[1]);
+				$get = explode('&', $get[1]);
 				// debug($get);
 			}
 		}
-		
+
 		// получаем индекс
 		if (!empty($routes[2])) {
 			$action_name = $routes[2];
@@ -42,7 +53,7 @@ class Route
 		if ($category) {
 			if ($action_name == 'index') {
 				$name_category = $category;
-				
+
 				$controller_name = 'Category';
 				$action_name = strtolower($controller_name);
 				$index = 'name_category';
@@ -58,7 +69,7 @@ class Route
 				}
 			}
 		}
-		
+
 		// добавляем префиксы
 		$model_name = 'Model_' . $controller_name;
 		$controller_name = 'Controller_' . $controller_name;

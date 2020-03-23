@@ -25,6 +25,8 @@ class ComposerStaticInitc2539cd05ac11f3378a73c89956f85a1
         'app\\classes\\Parser' => __DIR__ . '/../..' . '/application/classes/parser.php',
         'app\\classes\\Product' => __DIR__ . '/../..' . '/application/classes/product.php',
         'app\\classes\\Singleton' => __DIR__ . '/../..' . '/application/classes/singleton.php',
+        'app\\classes\\cart\\A_Cart' => __DIR__ . '/../..' . '/application/classes/cart/A_Cart.php',
+        'app\\classes\\cart\\Cart' => __DIR__ . '/../..' . '/application/classes/cart/Cart.php',
         'app\\classes\\db\\A_Db' => __DIR__ . '/../..' . '/application/classes/db/a_db.php',
         'app\\classes\\db\\Db' => __DIR__ . '/../..' . '/application/classes/db/db.php',
         'app\\classes\\db\\DbMysqli' => __DIR__ . '/../..' . '/application/classes/db/dbmysqli.php',
