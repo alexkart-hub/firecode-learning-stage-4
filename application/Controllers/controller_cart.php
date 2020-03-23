@@ -24,8 +24,8 @@ class Controller_Cart extends Controller
 		$data['short_categories'] = $result;
 		$cart = Cart::GetInstance();
 		if(isset($_GET['clear'])){
-			$cart->SessionStop();
-			// $cart->ClearCart();
+			// $cart->SessionStop();
+			$cart->ClearCart();
 		}
 		if(isset($_GET['delete_id'])){
 			$cart->DeleteFromCart($_GET['delete_id']);
