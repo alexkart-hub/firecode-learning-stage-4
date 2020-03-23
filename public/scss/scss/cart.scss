@@ -53,13 +53,13 @@
                 font-size: 14px;
                 color: #252525;
             }
-            .quantity_item {
-                // margin-top: 30px;
-            }
             .delete_item {
                 text-align: end;
                 padding-right: 20px;
                 color: #e90909;
+                .fa-times {
+                    cursor: pointer;
+                }
             }
         }
         .name_title,
@@ -79,6 +79,15 @@
             letter-spacing: 0.05em;
             color: #FFFFFF;
             border: none;
+        }
+    }
+    .to_main {
+        a {
+            color: $green-color;
+            text-decoration: none;
+            &:hover {
+                font-weight: 900;
+            }
         }
     }
 }

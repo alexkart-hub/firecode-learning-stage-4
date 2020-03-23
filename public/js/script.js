@@ -135,3 +135,28 @@ $("[id ^= 'p_add_to_cart_']").on({
         });
     }
 });
+// - Валидация текстовых полей ввода калькулятора
+$(".quantity").on({
+    "keydown": function(e) {
+        e.key == 0 ||
+            e.key == 1 ||
+            e.key == 2 ||
+            e.key == 3 ||
+            e.key == 4 ||
+            e.key == 5 ||
+            e.key == 6 ||
+            e.key == 7 ||
+            e.key == 8 ||
+            e.key == 9 ||
+            e.key == "." ||
+            e.key == "Tab" ||
+            e.key == "Backspace" ||
+            e.key == "Delete" ||
+            e.key == "ArrowLeft" ||
+            e.key == "ArrowRight" ||
+            e.key == "Escape" ||
+            e.key == "Enter" ||
+            e.preventDefault();
+        // console.log(e.key);
+    }
+});

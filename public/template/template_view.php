@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
         <div class="nav_bottom">
             <div class="container">
                 <nav class="navbar navbar-expand-md">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src="/img/logo.png" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

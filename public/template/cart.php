@@ -83,8 +83,14 @@ $total_price = $data['cart']['total_price'];
             </div>
             <div class="col-md"></div>
             <div class="col-md-auto text-center">
-                <div class="product_price">Итого: <span><?= $total_price; ?></span> <i class="fas fa-ruble-sign"></i></div>
+                <div class="product_price">Итого: <span><?= empty($total_price) ? 0 : $total_price; ?></span> <i class="fas fa-ruble-sign"></i></div>
             </div>
         </div>
     </div>
+<?php if(count($data['cart']['products']) == 0):?>
+    <div class="container text-center to_main my-5">
+        <p>Ваша корзина пуста.
+        <p>Перейти на <a href="/">главную страницу</a>
+    </div>
+<?php endif; ?>
 </section>
