@@ -11,7 +11,12 @@ $product = $data['product'];
         </div>
         <h1><?= $product['name']; ?></h1>
         <div class="row">
-            <div class="col-lg-7 col-md-6 text-md-left text-center">
+            <div class="col-lg-5 col-md-6 order-md-first image mb-5">
+                <div class="product_img">
+                    <img src="<?= $product['image']; ?>" alt="">
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 text-md-left text-left">
                 <div class="product_price">Цена: <span><?= $product['price']; ?></span> <i class="fas fa-ruble-sign"></i></div>
                 <div class="product_description">
                     <p><?= $product['description']; ?></p>
@@ -21,11 +26,7 @@ $product = $data['product'];
                 </div>
                 <button class="add_to_cart" id="p_add_to_cart_<?= $product['id']; ?>"><img src="/img/Vector-white.png" alt=""> В корзину</button>
             </div>
-            <div class="col-lg-5 col-md-6 order-md-first image">
-                <div class="product_img">
-                    <img src="<?= $product['image']; ?>" alt="">
-                </div>
-            </div>
+            
 
         </div>
     </div>
@@ -53,7 +54,7 @@ $product = $data['product'];
                                 <span class="card-title"><?= $product['name']; ?></span>
                             </div>
                             <div class="tile_img">
-                                <img src="<?= $product['image']; ?>" class="card-img-top p-2" alt="">
+                                <img src="<?= $product['image']; ?>" class="card-img-top" alt="">
                             </div>
                         </a>
                         <div class="tile_buttons">

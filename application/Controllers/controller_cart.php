@@ -22,16 +22,17 @@ class Controller_Cart extends Controller
 			$result[$category['id']] = $category['name']; 
 		}
 		$data['short_categories'] = $result;
+		// обработка запроса при нажатии кнопки "Очистить корзину"
 		$cart = Cart::GetInstance();
 		if(isset($_GET['clear'])){
 			// $cart->SessionStop();
 			$cart->ClearCart();
 		}
+		// обработка запроса при удалении товара из корзины
 		if(isset($_GET['delete_id'])){
 			$cart->DeleteFromCart($_GET['delete_id']);
-			$id = $_GET['delete_id'];
-
 		}
+		// обработка запроса при нажатии кнопок + и - в корзине товаров
 		if(isset($_GET['id'])){
 			$_SESSION['cart'][$_GET['id']] = $_GET['value'];
 			$cart->SaveCart($cart->GetCart(), $this->model->db);

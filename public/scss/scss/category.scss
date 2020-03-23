@@ -45,7 +45,7 @@
         max-width: 320px;
         border: 1px solid #A1A7B1;
         margin: 0 auto;
-        height: 500px;
+        height: 400px;
         a {
             color: #333333;
             text-decoration: none;
@@ -61,11 +61,12 @@
             height: 64px;
         }
         .tile_img {
-            max-width: 70%;
-            margin: 20px auto;
-            height: 250px;
+            max-width: 55%;
+            margin: 0px auto;
+            height: 170px;
+            width: max-content;
             .card-img-top {
-                // max-height: 100%;
+                max-height: 100%;
             }
         }
         .tile_buttons {

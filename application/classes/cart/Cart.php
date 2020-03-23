@@ -21,6 +21,10 @@ class Cart extends A_Cart
 	{
 	}
 
+	/**
+	 * Передает данные из сессии в корзину: 
+	 * $this->cart массив значений, где ключ - id продукта, а значение - количество; $this->count_in_cart - общее количество товарных позиций в корзине; $this->user - идентификатор сессии
+	 */
 	public function SetCart()
 	{
 		$this->cart = !empty($_SESSION['cart']) ? $_SESSION['cart'] : null;
@@ -29,6 +33,16 @@ class Cart extends A_Cart
 		return true;
 	}
 
+	/**
+	 * Выполняет SetCart(), после чего возвращает массив данных
+	 * $data = [
+	 *		'cart' => $this->cart,
+	 *		'count' => $this->count_in_cart,
+	 *		'user' => $this->user,
+	 *		'total_price' => self::GetTotalPrice()
+	 * 	];
+	 * @return array 
+	 */
 	public function GetCart()
 	{
 		$this->SetCart();
@@ -40,6 +54,10 @@ class Cart extends A_Cart
 		];
 		return $data;
 	}
+	/**
+	 * Возвращает общую сумму корзины
+	 * @return int|float
+	 */
 	static public function GetTotalPrice()
 	{
 		$result = 0;
@@ -53,6 +71,12 @@ class Cart extends A_Cart
 		}
 		return $result;
 	}
+
+	/**
+	 * Возвращает массив продуктов, содержащихся в базе данных
+	 * @param Db $db подключение к базе данных 
+	 * @return array
+	 */
 	public function GetProducts(Db $db)
 	{
 		$data['products'] = [];
@@ -67,36 +91,41 @@ class Cart extends A_Cart
 		return $data;
 	}
 
+	/**
+	 * Сохраняет корзину в базу данных
+	 * @param array $cart массив данных, полученный при помощи метода GetCart()
+	 * ($data = [
+	 *		'cart' => $this->cart,
+	 *		'count' => $this->count_in_cart,
+	 *		'user' => $this->user,
+	 *		'total_price' => self::GetTotalPrice()
+	 * 	]);
+	 * Проверяет, есть ли в базе данных корзина с user_id=user; 
+	 * Если есть - обновляем ее; если нет - создаем.
+	 * @return array корзина
+	 */
 	public function SaveCart($cart, Db $db)
 	{
 		extract($cart);
-		// $this->SetCookie();
 		$order_list = json_encode($cart);
-		$result = $db->ExecuteQuery("SELECT user_id FROM cart WHERE user_id='$user'");
-		if ($result->num_rows) {
+		$checkUser = $db->ExecuteQuery("SELECT user_id FROM cart WHERE user_id='$user'");
+		if ($checkUser->num_rows) {
 			$query = "UPDATE cart SET  order_list='$order_list',  total_price='$total_price', total_quantity='$count' WHERE user_id='$user'";
 		} else {
 			$query = "INSERT INTO cart ( user_id, order_list,  total_price, total_quantity ) VALUES ('$user','$order_list','$total_price','$count')";
 		}
-		$db->ExecuteQuery($query);
-		return $query;
+		$result = $db->ExecuteQuery($query);
+		return $result;
 	}
 
-	public function SetCookie()
-	{
-		if (!empty($_COOKIE['id'])) {
-			foreach ($_COOKIE['id'] as $k => $v) {
-				setcookie("id[$k]", "", time() - 3600, "/");
-			}
-		}
-
-		if (!empty($_SESSION['cart'])) {
-			foreach ($_SESSION['cart'] as $k => $v) {
-				setcookie("id[$k]", $v, time() + (60 * 60 * 24 * 30 * 12), "/");
-			}
-		}
-	}
-	public function GetUsersCart($user_id, Db $db)
+	/**
+	 * Возвращает корзину по идентификатору сессии
+	 * (находит ее в базе данных, загружает в сессию и в объект Cart)
+	 * @param int $user_id идентификатор сессии
+	 * @param Db $db подключение к базе данных
+	 * @return array $cart корзина
+	 */
+	public function GetUsersCart(int $user_id, Db $db)
 	{
 		$query = "SELECT * FROM cart WHERE user_id='$user_id'";
 		$cart = $db->ExecuteQuery($query)->fetch_assoc();
@@ -109,5 +138,6 @@ class Cart extends A_Cart
 				$this->SetCart();
 			}
 		}
+		return $cart;
 	}
 }

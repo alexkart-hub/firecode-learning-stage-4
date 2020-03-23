@@ -42,6 +42,11 @@ class Parser
         return $result_array;
     }
 
+    /**
+     * Возвращает массив, содержащий список категорий товаров
+     * @param mixed $file путь к файлу XML;
+     * @return array
+     */
     static public function GetSections($file)
     {
         $result_array = [];
@@ -67,6 +72,11 @@ class Parser
         return $result_array;
     }
 
+    /**
+     * Возвращает массив, содержащий список товаров
+     * @param mixed $file путь к файлу XML;
+     * @return array
+     */
     static public function GetProducts($file)
     {
         $result_array = [];
@@ -103,6 +113,12 @@ class Parser
         return $result_array;
     }
 
+    /**
+     * Возвращает из базы данных id производителя
+     * @param str $name наименование производителя
+     * @param Db $db подключение к базе данных
+     * @return numeric|boolean 
+     */
     static public function GetManufacturerByName($name, Db $db)
     {
         $query = "SELECT id FROM manufacturers WHERE name='$name'";
@@ -113,6 +129,13 @@ class Parser
             return false;
         }
     }
+
+    /**
+     * Возвращает из базы данных id назначения
+     * @param str $name наименование назначения
+     * @param Db $db подключение к базе данных
+     * @return numeric|boolean 
+     */
     static public function GetPurposeByName($name, Db $db)
     {
         $query = "SELECT id FROM purposes WHERE name='$name'";
@@ -153,7 +176,6 @@ class Parser
     static public function GetSectionById($id, Db $db)
     {
         $query = "SELECT name FROM sections WHERE id='$id'";
-        // echo $query;
         $result = $db->ExecuteQuery($query)->fetch_assoc();
         if ($result) {
             return $result['name'];
@@ -165,10 +187,8 @@ class Parser
     static public function LoadSectionsToDb($file, Db $db)
     {
         $sections = self::GetSections($file);
-        // debug($sections);
         foreach ($sections as $k => $v) {
             $name = self::GetSectionById($k, $db);
-            // echo $name;
             if (!$name) {
                 $query = "INSERT INTO sections (id,name) VALUES ('$k','$v')";
                 $db->ExecuteQuery($query);
@@ -179,7 +199,6 @@ class Parser
     static public function GetProductById($id, Db $db)
     {
         $query = "SELECT * FROM products WHERE id='$id'";
-        // echo $query;
         $result = $db->ExecuteQuery($query)->fetch_assoc();
         if ($result) {
             return $result;

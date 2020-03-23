@@ -16,9 +16,6 @@ class Route
 		if (isset($_COOKIE['user_id'])) {
 			$user_id = $_COOKIE['user_id'];
 		}
-
-
-
 		$cart->SessionStart($user_id);
 		$cookie = setcookie('user_id', $_SESSION['user_id'], time() + (60 * 60 * 24 * 30 * 12), "/");
 		if (!$_SESSION['cart']) {
@@ -30,20 +27,18 @@ class Route
 		$index = '';
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
-		// debug($routes);
 
-		// получаем имя контроллера
+		// получаем имя контроллера и get параметры
 		if (!empty($routes[1])) {
 			$controller_name = $routes[1];
 			$get = explode('?', $controller_name);
 			if (isset($get[1])) {
 				$controller_name = $get[0];
 				$get = explode('&', $get[1]);
-				// debug($get);
 			}
 		}
 
-		// получаем индекс
+		// получаем индекс (товар)
 		if (!empty($routes[2])) {
 			$action_name = $routes[2];
 		}
@@ -53,7 +48,6 @@ class Route
 		if ($category) {
 			if ($action_name == 'index') {
 				$name_category = $category;
-
 				$controller_name = 'Category';
 				$action_name = strtolower($controller_name);
 				$index = 'name_category';
@@ -89,10 +83,6 @@ class Route
 		if (file_exists($controller_path)) {
 			include $_SERVER['DOCUMENT_ROOT'] . "/application/controllers/" . $controller_file;
 		} else {
-			/*
-			правильно было бы кинуть здесь исключение,
-			но для упрощения сразу сделаем редирект на страницу 404
-			*/
 			Route::ErrorPage404();
 		}
 
@@ -105,7 +95,6 @@ class Route
 			// вызываем действие контроллера
 			$controller->$action($$index);
 		} else {
-			// здесь также разумнее было бы кинуть исключение
 			Route::ErrorPage404();
 		}
 	}
@@ -118,6 +107,12 @@ class Route
 		header('Location:' . $host . '404');
 	}
 
+	/**
+	 * Возвращает наименование категории из базы данных
+	 * @param string $name строка запроса 
+	 * @return string наименование категории из базы данных
+	 * 
+	 */
 	static function GetCategory(string $name)
 	{
 		$categories = Product::GetCategorys(DbMysqli::GetInstance());

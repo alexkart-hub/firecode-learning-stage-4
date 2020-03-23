@@ -32,7 +32,7 @@ gulp.task('sass', function() {
         .pipe(sass())
         .pipe(concat(config.output.cssName))
         .pipe(autoprefixer())
-        // .pipe(cleanCss())
+        .pipe(cleanCss())
         .pipe(gulp.dest(config.output.path))
         .pipe(browerSync.stream());
 });
@@ -43,7 +43,7 @@ gulp.task('a_sass', function() {
         .pipe(sass())
         .pipe(concat(config.output.a_cssName))
         .pipe(autoprefixer())
-        // .pipe(cleanCss())
+        .pipe(cleanCss())
         .pipe(gulp.dest(config.output.path))
         .pipe(browerSync.stream());
 });

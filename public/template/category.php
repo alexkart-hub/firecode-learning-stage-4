@@ -21,7 +21,7 @@ $category = $data['category'];
                                     <span class="card-title"><?= $product['name']; ?></span>
                                 </div>
                                 <div class="tile_img">
-                                    <img src="<?= $product['image'] ?>" class="card-img-top p-2" alt="">
+                                    <img src="<?= $product['image'] ?>" class="card-img-top" alt="">
                                 </div>
                             </a>
                             <div class="tile_buttons">

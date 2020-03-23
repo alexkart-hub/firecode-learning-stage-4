@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\classes\cart\Cart;
-use app\classes\cart\LittleCart;
 use app\classes\Pagination;
 use app\core\Controller;
 use app\core\Route;
@@ -20,6 +19,7 @@ class Controller_Category extends Controller
 
 	public function action_category($category)
 	{
+		// обработка запроса при пагинации
 		$get = empty($_GET['page']) ? 1 : $_GET['page'];
 		$countProductsOnPage = 20;
 
@@ -36,17 +36,13 @@ class Controller_Category extends Controller
 			'countProductsOnPage' => $countProductsOnPage
 		];
 		$data['products'] = Pagination::GetProducts($params, $this->model->db);
-
+		
+		//обработка запроса при добавлении товара в корзину с плитки товара
 		$cart = Cart::GetInstance();
 		$id = empty($_GET['id']) ? 0 : $_GET['id'];
 		if($id){
 			$cart->AddToCart($id,1);
 		}
-			// debug($cart->AddToCart($id,1));
-	
-		// $cart->SetCart();
-		// debug($_SESSION);
-		// debug($_GET);
 		
 		$layout = 'category';
 		

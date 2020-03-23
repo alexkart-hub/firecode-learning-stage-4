@@ -3,7 +3,6 @@ namespace app\classes\cart;
 
 use app\classes\db\Db;
 use app\classes\db\DbMysqli;
-use app\classes\Singleton;
 
 abstract class A_Cart
 {
@@ -12,44 +11,60 @@ abstract class A_Cart
 	private $total_price;
 	private $user;
 
-	use Singleton;
-
-	function AddToCart($id, $count = 0)
+	/**
+	 * @param int $id id продукта, добавляемого в корзину
+	 * @param int $count количество добавляемого продукта ( по умолчанию $count=1 )
+	 * @return array корзина
+	 */
+	function AddToCart( int $id, $count = 0 )
 	{
 		$_SESSION['cart'][$id] = $_SESSION['cart'][$id] + $count;
-		
-		
-		return $this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
-		
+		$result = $this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
+		return $result;
 	}
 
-	function DeleteFromCart($id)
+	/**
+	 * @param int $id id продукта, который удаляется из корзины
+	 * @return array корзина
+	 */
+	function DeleteFromCart(int $id)
 	{
 		unset($_SESSION['cart'][$id]);
 		$this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
 	}
 
+	/**
+	 * Очищает корзину
+	 * @return boolean true
+	 */
 	function ClearCart()
 	{
 		$_SESSION['cart'] = null;
-		$this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
+		$result = $this->SaveCart($this->GetCart(), DbMysqli::GetInstance());
+		return true;
 	}
 
-	function SessionStart($id = 1000)
+	/**
+	 * Стартует сессию
+	 * @param int $id Идентификатор сессии
+	 * @return boolean true
+	 */
+	function SessionStart(int $id = 1000)
 	{
 		session_start();
 		if ( empty($_SESSION['user_id']) ){
 			$_SESSION['user_id'] = $id;
-		$db = DbMysqli::GetInstance();
-		// $ip = $_SERVER['REMOTE_ADDR'];
 		}
 		return true;
 	}
 
+	/**
+	 * Останавливает сессию
+	 * (используется для отладки)
+	 */
 	function SessionStop()
 	{
 		$_SESSION['user_id'] = "";
-		// $_SESSION['cart'] = null;
 		session_destroy();
 	}
 
@@ -57,5 +72,16 @@ abstract class A_Cart
 	{
 	}
 
-	
+	/**
+	 * Выполняет SetCart(), после чего возвращает массив данных
+	 * $data = [
+	 *		'cart' => $this->cart,
+	 *		'count' => $this->count_in_cart,
+	 *		'user' => $this->user,
+	 *		'total_price' => self::GetTotalPrice()
+	 * 	];
+	 * @return array 
+	 */
+	public function GetCart()
+	{}
 }

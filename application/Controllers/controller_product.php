@@ -34,6 +34,7 @@ class Controller_Product extends Controller
     $data['products'] = Product::GetProducts5($data['product']['id_section'],$this->model->db);
 
     $cart = Cart::GetInstance();
+    // обработка запроса при добавлении товара в корзину из карточки товара
     $id = empty($_GET['id']) ? 0 : $_GET['id'];
     if ($id) {
       $cart->AddToCart($id, $_GET['quantity']);
